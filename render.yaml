@@ -1,0 +1,29 @@
+services:
+  - type: worker
+    name: paywall-autoresearch
+    env: node
+    buildCommand: npm install
+    startCommand: node src/agent.js
+    envVars:
+      - key: STATSIG_CONSOLE_API_KEY
+        sync: false
+      - key: STATSIG_LAYER_NAME
+        value: paywall_autoresearch_layer
+      - key: AMPLITUDE_API_KEY
+        sync: false
+      - key: AMPLITUDE_SECRET_KEY
+        sync: false
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: SLACK_BOT_TOKEN
+        sync: false
+      - key: SLACK_CHANNEL_ID
+        sync: false
+      - key: MAX_ACTIVE_EXPERIMENTS
+        value: "5"
+      - key: MIN_SAMPLE_SIZE
+        value: "500"
+      - key: MIN_CVR_LIFT
+        value: "0.10"
+      - key: CYCLE_HOURS
+        value: "4"
