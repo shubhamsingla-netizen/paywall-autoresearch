@@ -1,0 +1,15 @@
+{
+  "baseline": {
+    "variant_id": "baseline",
+    "headline": "₹1 में 7 दिन का ट्रायल",
+    "cta_text": "ट्रायल शुरू करें",
+    "trust_bullets": ["✓ कभी भी कैंसिल करें", "✓ कोई छुपा चार्ज नहीं"],
+    "urgency_text": "",
+    "show_timer": false,
+    "cvr": null,
+    "note": "Initial baseline — CVR to be measured from Amplitude"
+  },
+  "experiments": [],
+  "winners": [],
+  "killed": []
+}

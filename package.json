@@ -1,0 +1,17 @@
+{
+  "name": "paywall-autoresearch",
+  "version": "1.0.0",
+  "description": "Autonomous paywall CRO agent for Stage",
+  "main": "src/agent.js",
+  "scripts": {
+    "start": "node src/agent.js",
+    "dev": "node --watch src/agent.js",
+    "run-once": "node src/agent.js --once"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.39.0",
+    "axios": "^1.6.0",
+    "dotenv": "^16.0.0",
+    "node-cron": "^3.0.3"
+  }
+}
