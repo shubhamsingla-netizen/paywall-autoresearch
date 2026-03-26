@@ -47,21 +47,23 @@ async function getEventCount(eventType, variantId, startDaysAgo = 7) {
 }
 
 // Get CVR for a specific variant_id
-// CVR = trial_initiated / trial_paywall_viewed
+// CVR = trial_initiated_web / trial_paywall_viewed_web (filtered by ar_variant_id)
 async function getVariantMetrics(variantId, startDaysAgo = 7) {
   const [views, conversions] = await Promise.all([
-    getEventCount("trial_paywall_viewed", variantId, startDaysAgo),
-    getEventCount("trial_initiated", variantId, startDaysAgo),
+    getEventCount("trial_paywall_viewed_web", variantId, startDaysAgo),
+    getEventCount("trial_initiated_web", variantId, startDaysAgo),
   ]);
 
   const cvr = views > 0 ? conversions / views : 0;
   return { variantId, views, conversions, cvr };
 }
 
-// Get baseline CVR (all trial_paywall_viewed → trial_initiated, no variant filter)
+
+
+// Get baseline CVR (web events use _web suffix in Mobile App - Prod project)
 async function getBaselineCVR(startDaysAgo = 7) {
-  const paywallEvent = JSON.stringify({ event_type: "trial_paywall_viewed" });
-  const trialEvent = JSON.stringify({ event_type: "trial_initiated" });
+  const paywallEvent = JSON.stringify({ event_type: "trial_paywall_viewed_web" });
+  const trialEvent = JSON.stringify({ event_type: "trial_initiated_web" });
 
   const params = (e) => ({
     e,
